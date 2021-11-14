@@ -274,7 +274,7 @@ const ButtonForm = styled.input`
   color: ${themes.dark.text1};
 
   @media (prefers-color-scheme: dark) {
-    background-color: ${themes.light.primary};
+    background-color: ${themes.dark.primary};
   }
 `;
 
