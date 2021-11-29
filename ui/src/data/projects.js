@@ -1,4 +1,4 @@
-export const MockProjects = [
+var projects = [
     {
        "id":"12349as8df90",
        "title":"React",
@@ -90,3 +90,6 @@ export const MockProjects = [
        "timestamp":"765817712007"
     }
  ]
+
+
+export default projects;

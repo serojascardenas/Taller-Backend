@@ -1,3 +1,4 @@
+import { GenericResponse } from './../model/genericResponse';
 import { AboutMe } from "../model/aboutme";
 import { Project } from "../model/project";
 
@@ -38,5 +39,5 @@ export default interface ApiClient {
   token(email: string, password: string): Promise<TokenResponse>;
   getAboutMe(): Promise<AboutMe>;
   getProjects(): Promise<Project[]>;
-  // TODO: Create POST for project
+  createProject(id: string, title: string, description: string, version: string, link: string, tag: string):Promise<Project>;
 }

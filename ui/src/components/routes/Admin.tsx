@@ -1,7 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import createApiClient from "../../api/api-client-factory";
 import useApp from "../../hooks/useApp";
+import { Project } from "../../model/project";
 import { themes } from "../../styles/ColorStyles";
 import { Caption, H1 } from "../../styles/TextStyles";
 
@@ -17,6 +19,7 @@ const Admin = () => {
   const [sucessMsg, setSuccessMsg] = useState("");
   const { addNotification, removeLastNotification } = useApp();
 
+
   async function postProject(event: FormEvent<HTMLFormElement>) {
     dismissError();
     event.preventDefault();
@@ -30,11 +33,30 @@ const Admin = () => {
       console.log(tags);
       console.log(version);
       console.log(link);
+
       // TODO: Create Proyect Object and post (HINT, there a generateUUID helper method)
-      addNotification("Posting...");
-      resetForm();
-      setSuccessMsg(t("admin.suc_network"));
-      setTimeout(() => {setSuccessMsg("")}, 2000);
+      try {
+        addNotification(t("loader.text"));
+        const api = createApiClient();
+        const id = generateUUID();
+        const response: Project =  await api.createProject(id, title, description, tags, link, version);      
+        if(response.id !== undefined && response.id !== null && response.id.trim() !== ''){
+          addNotification("Posting...");
+          resetForm();
+          setSuccessMsg(t("admin.suc_network"));
+          setTimeout(() => {setSuccessMsg("")}, 2000);
+        } else{
+          setErrorMsg(t("admin.err_network"));
+
+        }   
+        
+      } catch (e) {
+        setErrorMsg(t("admin.err_network"));
+        console.log(e);
+      } finally {
+        removeLastNotification();
+      }
+      
     } catch (e) {
       setErrorMsg(t("admin.err_network"));
     } finally {
@@ -42,13 +64,16 @@ const Admin = () => {
     }
   }
 
-  // TODO: Use it to generete uid
-  // function generateUUID(): string {
-  //   return Math.floor((1 + Math.random()) * 0x100000000000)
-  //   .toString(16)
-  //   .substring(1);
-  // }
+ // TODO: Use it to generete uid
+  function generateUUID(): string {
+     return Math.floor((1 + Math.random()) * 0x100000000000)
+     .toString(16)
+     .substring(1);
+ }
 
+ function getDate(): number{
+   return Date.now();
+ }
   function resetForm() {
     setErrorMsg("");
     setSuccessMsg("");

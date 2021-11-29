@@ -1,3 +1,4 @@
+import { GenericResponse } from './../model/genericResponse';
 import ApiClient, {
   ApiError,
   BadRequest,
@@ -11,7 +12,7 @@ import ApiClient, {
   UnprocessableEntity,
 } from "./api-client";
 
-import { removeAuthToken } from "../utils/auth";
+import { getAccessToken, removeAuthToken } from "../utils/auth";
 import { Project } from "../model/project";
 import { AboutMe } from "../model/aboutme";
 
@@ -62,14 +63,14 @@ const handleResponse = async <T>(func: () => Promise<T>): Promise<T> => {
 };
 
 // TODO: Uncomment to use it with auth
-// const getAuthorizationHeader = () => {
-//   const accessToken = getAccessToken();
-//   if (accessToken) {
-//     return "Bearer " + accessToken;
-//   } else {
-//     throw new Unauthorized();
-//   }
-// };
+const getAuthorizationHeader = () => {
+   const accessToken = getAccessToken();
+   if (accessToken) {
+     return "Bearer " + accessToken;
+   } else {
+     throw new Unauthorized();
+   }
+};
 
 export default class HttpApiClient implements ApiClient {
   baseUrl: string;
@@ -101,7 +102,7 @@ export default class HttpApiClient implements ApiClient {
         {
           method: "GET",
           headers: {
-            //Authorization: getAuthorizationHeader()
+            Authorization: getAuthorizationHeader()
           }
         }
       );
@@ -118,7 +119,7 @@ export default class HttpApiClient implements ApiClient {
         {
           method: "GET",
           headers: {
-            //Authorization: getAuthorizationHeader()
+            Authorization: getAuthorizationHeader()
           }
         }
       );
@@ -137,5 +138,32 @@ export default class HttpApiClient implements ApiClient {
         }
      * 
      */
+    async createProject(id:string, title: string, description: string, version: string, link: string, tag: string): Promise<Project> {
+
+      const body = new URLSearchParams({
+        id: id,
+        title: title,
+        description: description,
+        version: version,
+        link: link,
+        tag: tag,
+        timestamp: (Date.now()).toString()
+      });
+
+      const response = await fetch(this.baseUrl + `/v1/projects/`,
+      {
+            method: "POST",
+            body: body,
+            headers: {
+              Authorization: getAuthorizationHeader()
+            }
+      });
+
+        if (!response.ok) {
+          throw await createApiError(response);
+        }
+        return response.json();
+    }
+    
   
 }
