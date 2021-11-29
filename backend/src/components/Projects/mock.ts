@@ -6,7 +6,7 @@ export const MockProjects = [
        "version":"17.0.1",
        "link":"https://reactjs.org/docs/hello-world.html",
        "tag":"JavaScript, Typescript, React",
-       "timestamp":"765817712000"
+       "timestamp":765817712000
     },
     {
        "id":"789asdfas89",
@@ -15,7 +15,7 @@ export const MockProjects = [
        "version":"4.0.3",
        "link":"https://create-react-app.dev",
        "tag":"Toolchain, React, Bootstraping",
-       "timestamp":"765817712001"
+       "timestamp":765817712001
     },
     {
        "id":"56765asdfasdf8",
@@ -24,7 +24,7 @@ export const MockProjects = [
        "version":"5.2.1",
        "link":"https://styled-components.com/docs",
        "tag":"CSS, JavaScript, Babel",
-       "timestamp":"765817712002"
+       "timestamp":765817712002
     },
     {
        "id":"56765asdfasdf8",
@@ -33,7 +33,7 @@ export const MockProjects = [
        "version":"19.9.2",
        "link":"https://react.i18next.com",
        "tag":"JavaScript, i18n, React",
-       "timestamp":"765817712003"
+       "timestamp":765817712003
     },
     {
        "id":"25634iuoasdf8",
@@ -42,7 +42,7 @@ export const MockProjects = [
        "version":"1.2.3",
        "link":"https://airbnb.design/lottie/",
        "tag":"Animation, React, Aribnb",
-       "timestamp":"765817712004"
+       "timestamp":765817712004
     },
     {
        "id":"7890asdf890",
@@ -51,7 +51,7 @@ export const MockProjects = [
        "version":"5.2.0",
        "link":"https://reactrouter.com/web/guides/quick-start",
        "tag":"Navigation, routing",
-       "timestamp":"765817712005"
+       "timestamp":765817712005
     },
     {
        "id":"7890asdf890",
@@ -60,7 +60,7 @@ export const MockProjects = [
        "version":"3.0,2",
        "link":"https://swagger.io",
        "tag":"API, OpenAPI",
-       "timestamp":"765817712006"
+       "timestamp":765817712006
     },
     {
        "id":"7890asdf890",
@@ -69,7 +69,7 @@ export const MockProjects = [
        "version":"-",
        "link":"https://www.figma.com/proto/3e43h8TrzwpjfKwXvFxZoP/Taller?page-id=144%3A51&node-id=308%3A1187&viewport=254%2C48%2C0.12&scaling=min-zoom&starting-point-node-id=147%3A3",
        "tag":"Vector, UX, UI",
-       "timestamp":"765817712007"
+       "timestamp":765817712007
     },
     {
        "id":"7890asdf891",
@@ -78,7 +78,7 @@ export const MockProjects = [
        "version":"-",
        "link":"https://github.com/serojas/threepoints-module4-week4",
        "tag":"React",
-       "timestamp":"765817712007"
+       "timestamp":765817712007
     },
     {
        "id":"7890asdf891",
@@ -87,6 +87,6 @@ export const MockProjects = [
        "version":"-",
        "link":"https://github.com/serojas/threepoints-module5-week1/tree/master",
        "tag":"Node",
-       "timestamp":"765817712007"
+       "timestamp":765817712007
     }
  ]
